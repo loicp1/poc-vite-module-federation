@@ -24,6 +24,6 @@ export default defineConfig({
     minify: false,
   },
   server: {
-    port: 5001,
+    port: 5002,
   },
 });
