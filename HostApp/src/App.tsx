@@ -1,8 +1,12 @@
 import { RouterProvider } from 'react-router-dom';
-import { router } from 'scopes/core/routing';
+import { useRouter } from 'scopes/core/hooks/useRouter';
 
 export const App = () => {
-  return (
+  const router = useRouter();
+
+  return router ? (
     <RouterProvider router={router} />
+  ) : (
+    <div>Loading remote routes...</div>
   );
 };

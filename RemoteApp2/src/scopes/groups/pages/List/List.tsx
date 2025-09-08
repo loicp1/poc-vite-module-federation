@@ -19,7 +19,7 @@ export const List = () => {
             <tr key={group.id}>
               <td>{group.label}</td>
               <td>
-                <button onClick={() => navigate(`/${routes.groups.root}/${group.id}`)}>
+                <button onClick={() => navigate(`${group.id}`)}>
                   Display detail
                 </button>
               </td>

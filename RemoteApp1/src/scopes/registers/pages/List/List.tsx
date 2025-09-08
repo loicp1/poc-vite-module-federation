@@ -19,7 +19,7 @@ export const List = () => {
             <tr key={register.id}>
               <td>{register.label}</td>
               <td>
-                <button onClick={() => navigate(`/${routes.registers.root}/${register.id}`)}>
+                <button onClick={() => navigate(`${register.id}`)}>
                   Display detail
                 </button>
               </td>

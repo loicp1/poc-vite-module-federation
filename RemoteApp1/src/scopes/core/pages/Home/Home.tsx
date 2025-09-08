@@ -1,21 +1,17 @@
 import { routes } from "config/routes";
 import { useNavigate } from "react-router-dom";
+import { useStandalone } from "scopes/core/hooks/useStandalone";
 
-interface HomeProps {
-  isAppRoot: boolean;
-};
-
-export const Home = ({ isAppRoot }: HomeProps) => {
+export const Home = () => {
   const navigate = useNavigate();
+  const isAppRoot = useStandalone();
 
   return (
     <div>
-      <button onClick={() => navigate(`/${routes.registers.root}`)}>Registers</button>
+      <button onClick={() => navigate(`${routes.registers.root}`)}>Registers</button>
 
       {!isAppRoot && (
-        // TODO: find a better to do this without app reload
-        // navigate("/") and navigate("../") don't work because navigation is relative to the app router
-        <button onClick={() => window.location.href = "/"}>Go back</button>
+        <button onClick={() => navigate('../')}>Go back</button>
       )}
     </div>
   );

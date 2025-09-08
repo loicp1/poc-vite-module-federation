@@ -12,9 +12,13 @@ export default defineConfig({
       name: 'remote-1',
       filename: 'remoteEntry.js',
       exposes: {
-        './App': './src/App.tsx',
+        './routes': './src/scopes/core/routing/routes.tsx',
       },
-      shared: ['react', 'react-dom'],
+      shared: {
+        'react': { singleton: true },
+        'react-dom': { singleton: true },
+        'react-router-dom': { singleton: true },
+      },
     }),
   ],
   build: {

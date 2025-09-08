@@ -1,13 +1,7 @@
-import { Fallback } from '../Fallback';
-import React from 'react';
-import type { AppProps } from 'remote-1/App';
+import type { RouteObject } from 'react-router-dom';
 
-const LazyApp = React.lazy(() =>
-  import('remote-1/App').then((module) => ({ default: module.App }))
-);
-
-export const App = (props: AppProps) => (
-  <React.Suspense fallback={<Fallback />}>
-    <LazyApp {...props} />
-  </React.Suspense>
-);
+// TODO: types
+export const loadRemote1Routes = async (): Promise<RouteObject[]> => {
+  const module = await import('remote-1/routes');
+  return module.getRoutes({ standalone: false });
+};

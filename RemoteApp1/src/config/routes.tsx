@@ -1,5 +1,4 @@
 export const routes = {
-  self: "/store",
   registers: {
     root: "registers",
     children: {

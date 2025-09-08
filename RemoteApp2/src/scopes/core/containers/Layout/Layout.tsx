@@ -1,11 +1,16 @@
 import { Outlet } from "react-router-dom"
+import { StandaloneProvider } from "scopes/core/hooks/useStandalone";
 
-export const Layout = () => {
+interface LayoutProps {
+  standalone?: boolean;
+};
+
+export const Layout = ({ standalone = true }:  LayoutProps) => {
   return (
-    <div>
+    <StandaloneProvider value={standalone}>
       <p>Identity app</p>
 
       <Outlet />
-    </div>
+    </StandaloneProvider>
   );
 };
