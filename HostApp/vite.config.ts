@@ -25,7 +25,11 @@ export default defineConfig({
           type: 'module',
         },
       },
-      shared: ['react', 'react-dom'],
+      shared: {
+        'react': { singleton: true },
+        'react-dom': { singleton: true },
+        'react-router-dom': { singleton: true },
+      },
     }),
   ],
   build: {

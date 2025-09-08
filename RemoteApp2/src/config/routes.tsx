@@ -1,5 +1,4 @@
 export const routes = {
-  self: "/identity",
   groups: {
     root: "groups",
     children: {

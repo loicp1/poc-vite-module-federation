@@ -1,8 +1,11 @@
-import { registers } from "config/mock";
+import { registers, userLoggedIn } from "config/mock";
 import { useNavigate, useParams } from "react-router-dom";
+import { useStandalone } from "scopes/core/hooks/useStandalone";
+import { isCashier } from "utils";
 
 export const Detail = () => {
   const navigate = useNavigate();
+  const standalone = useStandalone();
 
   const { id } = useParams();
 
@@ -21,11 +24,32 @@ export const Detail = () => {
             <span>{key}: {value}</span>
 
             {key === "status" && (
-              <button style={{
-                height: 24,
-              }}>
-                {value === "open" ? "Close" : "Open"}
-              </button>
+              <>
+                <button
+                  disabled={!isCashier(userLoggedIn)}
+                  style={{ height: 24 }}
+                >
+                  {value === "open" ? "Close" : "Open"}
+                </button>
+
+                {!isCashier(userLoggedIn) && (
+                  <span>
+                    You must be a cashier to open or close a register.
+                    
+                    {!standalone && (
+                      // TODO: export routes from remote 2 (identity) and use them here
+                      <a onClick={() => navigate(`/identity/users/${userLoggedIn.id}`)} style={{
+                        textDecoration: "underline",
+                        cursor: "pointer",
+                        marginLeft: 4,
+                        color: 'blue',
+                      }}>
+                          Click to access user page
+                      </a>
+                    )}
+                  </span>
+                )}
+              </>
             )}
           </div>
         ))

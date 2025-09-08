@@ -1,12 +1,8 @@
 import { RouterProvider } from "react-router-dom";
-import { useRouter } from "scopes/core/hooks/useRouter";
+import { getRouter } from "scopes/core/routing";
 
-export interface AppProps {
-  standalone?: boolean;
-};
-
-export const App = ({ standalone = true }: AppProps) => {
-  const router = useRouter(standalone);
+export const App = () => {
+  const router = getRouter();
 
   return (
     <RouterProvider router={router} />

@@ -1,2 +1,8 @@
 TODO:
-- routing between remote apps (e.g.: "store" redirecting to "identity" if user tries to open/close a register and their group is not "Cashiers")
+- use shared components lib
+- enhance UI a little bit
+- export routes (config) from remotes for safer navigation
+
+TO RESEARCH:
+- type exports from remotes (without lib)
+- shared state management
