@@ -1,3 +1,4 @@
+import { Topbar } from "lib";
 import { Outlet } from "react-router-dom"
 import { StandaloneProvider } from "scopes/core/hooks/useStandalone";
 
@@ -8,7 +9,9 @@ interface LayoutProps {
 export const Layout = ({ standalone = true }:  LayoutProps) => {
   return (
     <StandaloneProvider value={standalone}>
-      <p>Identity app</p>
+      {standalone && (
+        <Topbar title="Identity" />
+      )}
 
       <Outlet />
     </StandaloneProvider>
